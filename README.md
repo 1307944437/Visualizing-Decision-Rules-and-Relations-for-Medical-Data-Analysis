@@ -1,4 +1,4 @@
-# White-Box-Analysis-System
+# Visualizing Decision Rules and Relations for Medical Data Analysis
 
 A final year project for UM students major in CPS.
 
