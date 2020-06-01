@@ -17,9 +17,9 @@ Continue to study Rawgraph, try to build JavaScript model, but because the mainl
 
 ## 1-4-2020
 Demonstrated the test results of this period: users can simply drag and drop the level of Rawgraph online network diagram.
-### Discussion:
+* Discussion:
 The interaction required for the project is to drag and click directly within the chart, not to operate outside the chart.
-### Challenges:
+* Challenges:
 Find new tools to achieve interactivity.
 
 ## 11-4-2020
