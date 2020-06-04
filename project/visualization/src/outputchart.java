@@ -2,18 +2,11 @@ package ceshi;
 
 import java.io.*;
 
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 
-import com.csvreader.*;
-import com.opencsv.*;
 
 import javax.swing.JOptionPane;
 
-public class HtmlPage {
+public class outputchart {
 	
      public static void main(String[] args) {
          StringBuilder sb = new StringBuilder();
@@ -25,20 +18,24 @@ public class HtmlPage {
          String source[]=new String[100000]; 
          String target[]=new String[100000]; 
          int i=0;
+         int linksi=0;
          try {
-        	 String nodeaddress=JOptionPane.showInputDialog("Please enter the node file addressï¼š");
-        	 String linksaddress=JOptionPane.showInputDialog("Please enter the link file addressï¼š");
+        	 String nodeaddress=JOptionPane.showInputDialog("Please enter the node file address£º");
+        	 String linksaddress=JOptionPane.showInputDialog("Please enter the link file address£º");
              BufferedReader linkreader = new BufferedReader(new InputStreamReader(new FileInputStream(linksaddress)));
              String line = null;
              
              while((line=linkreader.readLine())!=null){
                  String item[] = line.split(",");
                  String last = item[item.length-1];
-                 System.out.println(last);
+                 
                  name[i]=item[3];
+                 
                  source[i]=item[1];
                  target[i]=item[2];
                  i++;
+                 
+                 linksi++;
              }
              
              try {
@@ -50,12 +47,12 @@ public class HtmlPage {
                  String last = item[item.length-1];
                  System.out.println(last);
                  nodename[nodei]=item[1];
-                 category[nodei]=item[2];
+                 category[nodei]=item[0];
                  nodei++;
              }
              
              try {
-                 printStream= new PrintStream(new FileOutputStream("report.html"));
+                 printStream= new PrintStream(new FileOutputStream("outputchart.html"));
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
@@ -64,19 +61,19 @@ public class HtmlPage {
                 sb.append("<head>");
                 sb.append("<meta charset=\"utf-8\">");
                 sb.append("<meta http-equiv=\"Access-Control-Allow-Origin\" content=\"*\">");
-                sb.append("<title>Echarts test</title>");
+                sb.append("<title>output chart</title>");
                 sb.append("<script src=\"https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js\"></script>");
                 sb.append("<script src=\"https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js\"></script>");      
                 sb.append("</head>");
                 //body
-                sb.append("<body><div id=\"main\" style=\"width:1000px;height:800px\"></div>");
+                sb.append("<body><div id=\"main\" style=\"width:1500px;height:1200px\"></div>");
                 //script
                 sb.append("<script type=\"text/javascript\">\r\n" + 
                 		"\r\n" + 
                 		"    var myChart = echarts.init(document.getElementById('main'));\r\n" + 
                 		"\r\n" + 
                 		"    var categories = [];");
-                sb.append("    for (var i = 0; i < "+nodei+"; i++) {\r\n" + 
+                sb.append("    for (var i = 0; i < "+70+"; i++) {\r\n" + 
                 		"\r\n" + 
                 		"        categories[i] = {\r\n" + 
                 		"\r\n" + 
@@ -89,15 +86,15 @@ public class HtmlPage {
                 sb.append("    myChart.setOption({\r\n" + 
                 		"\r\n" + 
                 		"\r\n" + 
-                		"        // å›¾çš„æ ‡é¢˜\r\n" + 
+                		"        // Í¼µÄ±êÌâ\r\n" + 
                 		"\r\n" + 
                 		"        title: {\r\n" + 
                 		"\r\n" + 
-                		"            text: 'ECharts å…³ç³»å›¾'\r\n" + 
+                		"            text: 'output chart'\r\n" + 
                 		"\r\n" + 
                 		"        },\r\n" + 
                 		"\r\n" + 
-                		"        // æç¤ºæ¡†çš„é…ç½®\r\n" + 
+                		"        // ÌáÊ¾¿òµÄÅäÖÃ\r\n" + 
                 		"\r\n" + 
                 		"        tooltip: {\r\n" + 
                 		"\r\n" + 
@@ -109,11 +106,11 @@ public class HtmlPage {
                 		"\r\n" + 
                 		"        },\r\n" + 
                 		"\r\n" + 
-                		"        // å·¥å…·ç®±\r\n" + 
+                		"        // ¹¤¾ßÏä\r\n" + 
                 		"\r\n" + 
                 		"        toolbox: {\r\n" + 
                 		"\r\n" + 
-                		"            // æ˜¾ç¤ºå·¥å…·ç®±\r\n" + 
+                		"            // ÏÔÊ¾¹¤¾ßÏä\r\n" + 
                 		"\r\n" + 
                 		"            show: true,\r\n" + 
                 		"\r\n" + 
@@ -125,7 +122,7 @@ public class HtmlPage {
                 		"\r\n" + 
                 		"                },\r\n" + 
                 		"\r\n" + 
-                		"                // è¿˜åŽŸ\r\n" + 
+                		"                // »¹Ô­\r\n" + 
                 		"\r\n" + 
                 		"                restore: {\r\n" + 
                 		"\r\n" + 
@@ -133,7 +130,7 @@ public class HtmlPage {
                 		"\r\n" + 
                 		"                },\r\n" + 
                 		"\r\n" + 
-                		"                // ä¿å­˜ä¸ºå›¾ç‰‡\r\n" + 
+                		"                // ±£´æÎªÍ¼Æ¬\r\n" + 
                 		"\r\n" + 
                 		"                saveAsImage: {\r\n" + 
                 		"\r\n" + 
@@ -159,13 +156,13 @@ public class HtmlPage {
                 		"\r\n" + 
                 		"        series: [{\r\n" + 
                 		"\r\n" + 
-                		"            type: 'graph', // ç±»åž‹:å…³ç³»å›¾\r\n" + 
+                		"            type: 'graph', // ÀàÐÍ:¹ØÏµÍ¼\r\n" + 
                 		"\r\n" + 
-                		"            layout: 'force', //å›¾çš„å¸ƒå±€ï¼Œç±»åž‹ä¸ºåŠ›å¯¼å›¾\r\n" + 
+                		"            layout: 'force', //Í¼µÄ²¼¾Ö£¬ÀàÐÍÎªÁ¦µ¼Í¼\r\n" + 
                 		"\r\n" + 
-                		"            symbolSize: 40, // è°ƒæ•´èŠ‚ç‚¹çš„å¤§å°\r\n" + 
+                		"            symbolSize: 40, // µ÷Õû½ÚµãµÄ´óÐ¡\r\n" + 
                 		"\r\n" + 
-                		"            roam: true, // æ˜¯å¦å¼€å¯é¼ æ ‡ç¼©æ”¾å’Œå¹³ç§»æ¼«æ¸¸ã€‚é»˜è®¤ä¸å¼€å¯ã€‚å¦‚æžœåªæƒ³è¦å¼€å¯ç¼©æ”¾æˆ–è€…å¹³ç§»,å¯ä»¥è®¾ç½®æˆ 'scale' æˆ–è€… 'move'ã€‚è®¾ç½®æˆ true ä¸ºéƒ½å¼€å¯\r\n" + 
+                		"            roam: true, // ÊÇ·ñ¿ªÆôÊó±êËõ·ÅºÍÆ½ÒÆÂþÓÎ¡£Ä¬ÈÏ²»¿ªÆô¡£Èç¹ûÖ»ÏëÒª¿ªÆôËõ·Å»òÕßÆ½ÒÆ,¿ÉÒÔÉèÖÃ³É 'scale' »òÕß 'move'¡£ÉèÖÃ³É true Îª¶¼¿ªÆô\r\n" + 
                 		"\r\n" + 
                 		"            edgeSymbol: ['circle', 'arrow'],\r\n" + 
                 		"\r\n" + 
@@ -237,12 +234,12 @@ public class HtmlPage {
                 		"\r\n" + 
                 		" \r\n" + 
                 		"\r\n" + 
-                		"            // æ•°æ®\r\n" + 
+                		"            // Êý¾Ý\r\n" + 
                 		"\r\n" + 
                 		"            data: [");
                 //data
                 int nodeI=0;
-                sb.append("{name: '"+nodename[nodeI]+"',symbolsize: 70,category: "+category[nodeI]+",} ,");
+                sb.append("{name: '"+nodename[nodeI]+"',symbolsize: 50,category: "+category[nodeI]+",} ,");
                 nodeI++;
                 while(nodeI<nodei-1) {
                 	sb.append("{name: '"+nodename[nodeI]+"',symbolsize: 50,category: "+category[nodeI]+",} ,");
@@ -255,11 +252,11 @@ public class HtmlPage {
                 sb.append("            links: [");
                 
                 int I=0;
-                while(I<i) {
-                	sb.append("{source: '"+source[I]+"',target: '"+target[I]+"',name: '"+name[I]+"',des: 'link05des'} ,");
+                while(I<linksi) {
+                	sb.append("{source: '"+source[I]+"',target: '"+target[I]+"',name: '"+name[I]+"'} ,");
                 	I++;
                 }
-                sb.append("{source: '"+source[I]+"',target: '"+target[I]+"',name: '"+name[I]+"',des: 'link05des'} ");
+                sb.append("{source: '"+source[I]+"',target: '"+target[I]+"',name: '"+name[I]+"'} ");
                 sb.append("],\r\n" + 
                 		"\r\n" + 
                 		"            categories: categories,\r\n" + 
