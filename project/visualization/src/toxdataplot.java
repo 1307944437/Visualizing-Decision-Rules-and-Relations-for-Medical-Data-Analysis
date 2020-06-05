@@ -9,7 +9,7 @@ public class toxdataplot {
      public static void main(String[] args) {
          StringBuilder sb = new StringBuilder();
          PrintStream printStream = null ;
-         int dataNO=18*6;
+         int dataNO=18*3;
          String title=null;
 
          try {
@@ -116,7 +116,7 @@ public class toxdataplot {
                         }
                         sb.append("$(document).ready(function(){\r\n" + 
                         		"\r\n" + 
-                        		"        //echarts进行初始化\r\n" + 
+                        		"        //echarts杩涜鍒濆鍖朶r\n" + 
                         		"		var myChart = echarts.init(document.getElementById(\"main"+(page+1)+"\"));" + 
                         		"		myChart.setOption({\r\n" + 
                         		"title: {\r\n" + 
@@ -128,21 +128,21 @@ public class toxdataplot {
                         		"            },\r\n" + 
                         		"            xAxis: {\r\n"); 
                         sb.append("                data: [");
-                        for(int i=1;i<max+1;i++) {
+                        for(int i=0;i<max+1;i++) {
                         	sb.append("\""+i+"\",");
                         }
                         sb.append("]\r\n" + 
                         		"            },\r\n" + 
-                        		"            yAxis: {},\r\n" + 
+                        		"            yAxis: [{name:'positive',type:'value',},{name:'negative',type:'value'}],\r\n" + 
                         		"            series: [{\r\n" + 
-                        		"                name: 'positive',\r\n smooth:true,symbolSize:10," + 
+                        		"                name: 'positive',\r\n smooth:true,symbolSize:10,yAxisIndex:0," + 
                         		"                type: 'line',\r\n" + 
                         		"                data: [");
                         for(int i=0;i<max;i++) {
                         	sb.append(positive[i]+",");
                         }
                         sb.append("]\r\n" + 
-                        		"            },{name:'negative',smooth:true,type:'line',symbolSize:10,data:[");
+                        		"            },{name:'negative',smooth:true,type:'line',symbolSize:10,yAxisIndex:1,data:[");
                         for(int i=0;i<max;i++) {
                         	sb.append(negative[i]+",");
                         }
