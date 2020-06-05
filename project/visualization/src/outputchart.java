@@ -20,16 +20,20 @@ public class outputchart {
          int i=0;
          int linksi=0;
          try {
-        	 String nodeaddress=JOptionPane.showInputDialog("Please enter the node file address£º");
-        	 String linksaddress=JOptionPane.showInputDialog("Please enter the link file address£º");
+        	 String nodeaddress=JOptionPane.showInputDialog("Please enter the node file addressï¼š");
+        	 String linksaddress=JOptionPane.showInputDialog("Please enter the link file addressï¼š");
              BufferedReader linkreader = new BufferedReader(new InputStreamReader(new FileInputStream(linksaddress)));
              String line = null;
              
              while((line=linkreader.readLine())!=null){
                  String item[] = line.split(",");
                  String last = item[item.length-1];
+                 try {
+                 name[i]=item[3].substring(0,4);}
+                 catch (Exception e) {
+                	 name[i]=item[3];
+                 }
                  
-                 name[i]=item[3];
                  
                  source[i]=item[1];
                  target[i]=item[2];
@@ -86,7 +90,7 @@ public class outputchart {
                 sb.append("    myChart.setOption({\r\n" + 
                 		"\r\n" + 
                 		"\r\n" + 
-                		"        // Í¼µÄ±êÌâ\r\n" + 
+                		"        // å›¾çš„æ ‡é¢˜\r\n" + 
                 		"\r\n" + 
                 		"        title: {\r\n" + 
                 		"\r\n" + 
@@ -94,7 +98,7 @@ public class outputchart {
                 		"\r\n" + 
                 		"        },\r\n" + 
                 		"\r\n" + 
-                		"        // ÌáÊ¾¿òµÄÅäÖÃ\r\n" + 
+                		"        // æç¤ºæ¡†çš„é…ç½®\r\n" + 
                 		"\r\n" + 
                 		"        tooltip: {\r\n" + 
                 		"\r\n" + 
@@ -106,11 +110,11 @@ public class outputchart {
                 		"\r\n" + 
                 		"        },\r\n" + 
                 		"\r\n" + 
-                		"        // ¹¤¾ßÏä\r\n" + 
+                		"        // å·¥å…·ç®±\r\n" + 
                 		"\r\n" + 
                 		"        toolbox: {\r\n" + 
                 		"\r\n" + 
-                		"            // ÏÔÊ¾¹¤¾ßÏä\r\n" + 
+                		"            // æ˜¾ç¤ºå·¥å…·ç®±\r\n" + 
                 		"\r\n" + 
                 		"            show: true,\r\n" + 
                 		"\r\n" + 
@@ -122,7 +126,7 @@ public class outputchart {
                 		"\r\n" + 
                 		"                },\r\n" + 
                 		"\r\n" + 
-                		"                // »¹Ô­\r\n" + 
+                		"                // è¿˜åŸ\r\n" + 
                 		"\r\n" + 
                 		"                restore: {\r\n" + 
                 		"\r\n" + 
@@ -130,7 +134,7 @@ public class outputchart {
                 		"\r\n" + 
                 		"                },\r\n" + 
                 		"\r\n" + 
-                		"                // ±£´æÎªÍ¼Æ¬\r\n" + 
+                		"                // ä¿å­˜ä¸ºå›¾ç‰‡\r\n" + 
                 		"\r\n" + 
                 		"                saveAsImage: {\r\n" + 
                 		"\r\n" + 
@@ -156,13 +160,13 @@ public class outputchart {
                 		"\r\n" + 
                 		"        series: [{\r\n" + 
                 		"\r\n" + 
-                		"            type: 'graph', // ÀàĞÍ:¹ØÏµÍ¼\r\n" + 
+                		"            type: 'graph', // ç±»å‹:å…³ç³»å›¾\r\n" + 
                 		"\r\n" + 
-                		"            layout: 'force', //Í¼µÄ²¼¾Ö£¬ÀàĞÍÎªÁ¦µ¼Í¼\r\n" + 
+                		"            layout: 'force', //å›¾çš„å¸ƒå±€ï¼Œç±»å‹ä¸ºåŠ›å¯¼å›¾\r\n" + 
                 		"\r\n" + 
-                		"            symbolSize: 40, // µ÷Õû½ÚµãµÄ´óĞ¡\r\n" + 
+                		"            symbolSize: 40, // è°ƒæ•´èŠ‚ç‚¹çš„å¤§å°\r\n" + 
                 		"\r\n" + 
-                		"            roam: true, // ÊÇ·ñ¿ªÆôÊó±êËõ·ÅºÍÆ½ÒÆÂşÓÎ¡£Ä¬ÈÏ²»¿ªÆô¡£Èç¹ûÖ»ÏëÒª¿ªÆôËõ·Å»òÕßÆ½ÒÆ,¿ÉÒÔÉèÖÃ³É 'scale' »òÕß 'move'¡£ÉèÖÃ³É true Îª¶¼¿ªÆô\r\n" + 
+                		"            roam: true, // æ˜¯å¦å¼€å¯é¼ æ ‡ç¼©æ”¾å’Œå¹³ç§»æ¼«æ¸¸ã€‚é»˜è®¤ä¸å¼€å¯ã€‚å¦‚æœåªæƒ³è¦å¼€å¯ç¼©æ”¾æˆ–è€…å¹³ç§»,å¯ä»¥è®¾ç½®æˆ 'scale' æˆ–è€… 'move'ã€‚è®¾ç½®æˆ true ä¸ºéƒ½å¼€å¯\r\n" + 
                 		"\r\n" + 
                 		"            edgeSymbol: ['circle', 'arrow'],\r\n" + 
                 		"\r\n" + 
@@ -234,7 +238,7 @@ public class outputchart {
                 		"\r\n" + 
                 		" \r\n" + 
                 		"\r\n" + 
-                		"            // Êı¾İ\r\n" + 
+                		"            // æ•°æ®\r\n" + 
                 		"\r\n" + 
                 		"            data: [");
                 //data
